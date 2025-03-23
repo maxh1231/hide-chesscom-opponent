@@ -2,9 +2,27 @@
   "manifest_version": 2,
   "name": "chess-name-hider",
   "version": "1.0",
+  "description": "",
+  "icons": {
+    "48": "assets/block-48.png",
+    "96": "assets/block-96.png"
+  },
+  "permissions": [
+    "activeTab"
+  ],
+  "browser_action": {
+    "default_icon": "assets/block-32.png",
+    "default_title": "test title",
+    "default_popup": "popup/index.html"
+  },
+  "options_ui": {
+    "page": "options/index.html"
+  },
   "content_scripts": [
     {
       "matches": [
+        "https://www.chess.com/*",
+        "https://www.chess.com/play/online",
         "https://www.chess.com/game/*",
         "https://www.chess.com/game/live/*"
       ],
