@@ -5,29 +5,62 @@
 <head>
     <meta charset="utf-8" />
     <meta name="color-scheme" content="dark light" />
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <h1>OPTIONS</h1>
-    <button>Check All</button>
-    <form>
-        <input id="opp-avatar" type="checkbox" value="opp-avatar">
-        <label for="opp-avatar">Avatar</label>
+    <form class="checkbox-container">
+        <h2>Hide your Opponent:</h2>
+        <button>Check All</button>
 
-        <input id="opp-name" type="checkbox" value="opp-name">
-        <label for="opp-name">Name</label>
+        <div class="setting-item">
+            <label for="opp-avatar">Avatar</label>
+            <div class="setting-checkbox">
+                <input id="opp-avatar" type="checkbox" value="opp-avatar">
+                <label for="opp-avatar">Replaces your opponent's avatar image with the default Chess.com avatar.</label>
+            </div>
+        </div>
 
-        <input id="opp-rating" type="checkbox" value="opp-rating">
-        <label for="opp-rating">Rating</label>
+        <div class="setting-item">
+            <label for="opp-name">Username</label>
+            <div class="setting-checkbox">
+                <input id="opp-name" type="checkbox" value="opp-name">
+                <label for="opp-name">Hides your opponent's name.</label>
+            </div>
+        </div>
 
-        <input id="opp-badge" type="checkbox" value="opp-badge">
-        <label for="opp-badge">Member Status</label>
+        <div class="setting-item">
+            <label for="opp-rating">Rating</label>
+            <div class="setting-checkbox">
+                <input id="opp-rating" type="checkbox" value="opp-rating">
+                <label for="opp-rating">Hides your opponent's rating.</label>
+            </div>
+        </div>
 
-        <input id="opp-flag" type="checkbox" value="opp-flag">
-        <label for="opp-flag">Country Flag</label>
+        <div class="setting-item">
+            <label for="opp-badge">Membership</label>
+            <div class="setting-checkbox">
+                <input id="opp-badge" type="checkbox" value="opp-badge">
+                <label for="opp-badge">Hides your opponent's Gold, Platinum, or Diamond membership badge.</label>
+            </div>
+        </div>
 
-        <input id="opp-flair" type="checkbox" value="opp-flair">
-        <label for="opp-flair">Flair</label>
+        <div class="setting-item">
+            <label for="opp-flag">Country Flag</label>
+            <div class="setting-checkbox">
+                <input id="opp-flag" type="checkbox" value="opp-flag">
+                <label for="opp-flag">Hides your opponent's country's flag.</label>
+            </div>
+        </div>
+
+        <div class="setting-item">
+            <label for="opp-flair">Flair</label>
+            <div class="setting-checkbox">
+                <input id="opp-flair" type="checkbox" value="opp-flair">
+                <label for="opp-flair">Hides your opponent's flair.</label>
+            </div>
+        </div>
     </form>
 </body>
 <script src="index.js"></script>

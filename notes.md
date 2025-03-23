@@ -44,3 +44,28 @@ User games
 Spectating: ![alt text](image.png)
 
 div.tabs-component firstChild > span.tabs-label == 'Watch'?
+
+# Game Over
+
+#### chat box
+When game ends, if user loses, opp's username displays in chat. It also reports the user's new rating as a textnode. Can extract this string. 
+
+![alt text](image-1.png)
+
+We want everything after \n. Can possibly pull a hardcoded index? NOPE data not static
+
+I think it makes the most sense to get the new rating like so: 
+`(div.game-over-message-component > a.user-username).nextSibling` replace its textContent with everything after the \n
+then hide `(div.game-over-message-component > a.user-username)`
+
+#### opp's tagline
+Opp's rating and +- displays
+![alt text](image-2.png)
+
+can target this by `(div.player-component.player-top > div.player-tagline > player-game-over-component > span.rating-score-rating)
+
+is this important?
+
+# options insp
+
+![alt text](image-3.png)

@@ -29,8 +29,7 @@ const hideElements = () => {
     // let newGameText = newGameMsgParent.firstChild;
 
     let newGameMsg = document.querySelector('div.game-start-message-component');
-    if (newGameMsg) newGameMsg.replaceChildren('New Game');
-
+    if (newGameMsg) newGameMsg.style.display = 'none';
 
     let rateOppMsg = document.querySelector('div.game-rate-sport-message-component');
     if (rateOppMsg) rateOppMsg.style.display = 'none';
