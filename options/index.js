@@ -1,15 +1,7 @@
 const checkAllBtn = document.getElementById('check-all');
 const radioBtns = document.getElementsByTagName('input');
-let count = 1;
 
-console.log(radioBtns)
-
-checkAllBtn.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (checkAllBtn.textContent == 'Check All') checkButtons(radioBtns, true)
-    else if (checkAllBtn.textContent == 'Uncheck All') checkButtons(radioBtns, false)
-})
-
+// Check / Uncheck buttons and change button text
 const checkButtons = (btnsToCheck, check) => {
     for (let btn of btnsToCheck) {
         btn.checked = check
@@ -17,3 +9,9 @@ const checkButtons = (btnsToCheck, check) => {
     if (check) checkAllBtn.textContent = 'Uncheck All'
     else if (!check) checkAllBtn.textContent = 'Check All'
 }
+
+checkAllBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (checkAllBtn.textContent == 'Check All') checkButtons(radioBtns, true)
+    else if (checkAllBtn.textContent == 'Uncheck All') checkButtons(radioBtns, false)
+})

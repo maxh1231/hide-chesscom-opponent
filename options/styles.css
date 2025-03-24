@@ -16,13 +16,25 @@
     font-weight: bold;
     font-size: 1.25em;
     padding-left: 4px;
-
 }
 
-.setting-checkbox {
+.setting-item-checkbox {
+    display: flex;
+    align-items: center;
     margin: 5px 0;
 }
 
-.setting-checkbox>label {
+.setting-item-checkbox>label {
     opacity: .7;
+    margin-left: 2px;
+}
+
+.indented-item {
+    margin-left: 30px;
+}
+
+.indented-item>label {
+    font-weight: bold;
+    font-size: 1.15em;
+    padding-left: 4px;
 }
