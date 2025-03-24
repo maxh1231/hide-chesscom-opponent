@@ -38,3 +38,8 @@
     font-size: 1.25em;
     padding-left: 4px;
 }
+
+.form-actions {
+    display: flex;
+    flex-direction: row;
+}

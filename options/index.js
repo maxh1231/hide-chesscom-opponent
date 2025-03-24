@@ -1,21 +1,28 @@
-const form = document.getElementById('settings-form')
-
 const checkAllBtn = document.getElementById('check-all');
 const checkboxBtns = document.getElementsByTagName('input');
 
-const usernameBtn = document.getElementById('username');
-const usernamePostGameBtn = document.getElementById('username-postgame')
-
-const ratingBtn = document.getElementById('rating');
-const ratingPostGameBtn = document.getElementById('rating-postgame');
-
-// Check / Uncheck checkboxes and change button text
+/**
+ * Checks or unchecks all `btnsToCheck`.
+ * @param {HTMLCollectionOf<HTMLInputElement>} btnsToCheck 
+ * @param {boolean} doCheck 
+ */
 const checkAllButtons = (btnsToCheck, doCheck) => {
     for (let btn of btnsToCheck) {
         btn.checked = doCheck;
+        if (btn.name.includes('postgame')) toggleIndentSetting(btn);
     }
-    toggleIndentSetting(usernamePostGameBtn)
-    toggleIndentSetting(ratingPostGameBtn);
+}
+
+/**
+ * Disables and unchecks input if parent input is unchecked.
+ * Enables input if parent input is checked.
+ * @param {HTMLInputElement} indentBtn 
+ */
+const toggleIndentSetting = (indentBtn) => {
+    indentBtn.disabled = !indentBtn.parentElement.parentElement.previousElementSibling.firstElementChild.checked;
+    indentBtn.parentElement.previousElementSibling.style.opacity = indentBtn.disabled ? '.7' : '1';
+
+    if (indentBtn.disabled) indentBtn.checked = false;
 }
 
 // Refactor better way to handle conditional button switch
@@ -31,25 +38,13 @@ checkAllBtn.addEventListener('click', (e) => {
     }
 })
 
-const toggleIndentSetting = (indentBtn) => {
-    indentBtn.disabled = !indentBtn.parentElement.parentElement.previousElementSibling.firstElementChild.checked;
-    indentBtn.parentElement.previousElementSibling.style.opacity = indentBtn.disabled ? '.7' : '1';
+document.getElementById('username').addEventListener('click', (e) => toggleIndentSetting(e.target.parentElement.nextElementSibling.lastElementChild.firstElementChild));
+document.getElementById('rating').addEventListener('click', (e) => toggleIndentSetting(e.target.parentElement.nextElementSibling.lastElementChild.firstElementChild));
 
-    if (indentBtn.disabled) indentBtn.checked = false;
-}
-
-ratingBtn.addEventListener('click', () => {
-    toggleIndentSetting(ratingPostGameBtn);
-})
-
-usernameBtn.addEventListener('click', () => {
-    toggleIndentSetting(usernamePostGameBtn)
-})
-
-form.addEventListener('submit', async (e) => {
+document.getElementById('settings-form').addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    let data = new FormData(form);
+    let data = new FormData(e.target);
     let userPreferences = {
         avatar: false,
         badge: false,
@@ -64,12 +59,12 @@ form.addEventListener('submit', async (e) => {
         userPreferences[`${key}`] = true;
     }
     await browser.storage.local.set({ userPreferences });
-})
+});
 
-
-// dev convenience, should pull storage.local and persist settings
+/**
+ * Retrieves user preferences and applies them
+ */
 document.addEventListener('DOMContentLoaded', async () => {
-
     try {
         const { userPreferences } = await browser.storage.local.get('userPreferences');
 
@@ -79,7 +74,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (key.includes('postgame')) toggleIndentSetting(checkboxBtns[`${key}`]);
         }
     } catch {
-        console.error('User Preferences not found.')
+        console.error('User Preferences not found.');
     }
-})
-
+});
