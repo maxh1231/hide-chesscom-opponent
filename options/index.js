@@ -46,14 +46,9 @@ usernameBtn.addEventListener('click', () => {
 })
 
 
-
-
-
-
-
 // dev convenience, should pull storage.local and persist settings
 document.addEventListener('DOMContentLoaded', () => {
-    toggleIndentButton(usernamePostGameBtn, usernamePostGameLbl, usernameBtn)
-    toggleIndentButton(ratingPostGameBtn, ratingPostGameLbl, ratingBtn)
+    toggleIndentButton(usernamePostGameBtn, usernameBtn)
+    toggleIndentButton(ratingPostGameBtn, ratingBtn)
 })
 
