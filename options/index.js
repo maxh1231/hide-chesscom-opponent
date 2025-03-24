@@ -1,3 +1,5 @@
+const form = document.getElementById('settings-form')
+
 const checkAllBtn = document.getElementById('check-all');
 const checkboxBtns = document.getElementsByTagName('input');
 
@@ -12,8 +14,8 @@ const checkAllButtons = (btnsToCheck, doCheck) => {
     for (let btn of btnsToCheck) {
         btn.checked = doCheck;
     }
-    toggleIndentButton(usernamePostGameBtn, usernameBtn)
-    toggleIndentButton(ratingPostGameBtn, ratingBtn);
+    toggleIndentSetting(usernamePostGameBtn)
+    toggleIndentSetting(ratingPostGameBtn);
 }
 
 // Refactor better way to handle conditional button switch
@@ -29,26 +31,55 @@ checkAllBtn.addEventListener('click', (e) => {
     }
 })
 
-const toggleIndentButton = (indentBtn, parentBtn) => {
-    console.log(indentBtn.parentElement)
-    indentBtn.disabled = !parentBtn.checked;
+const toggleIndentSetting = (indentBtn) => {
+    indentBtn.disabled = !indentBtn.parentElement.parentElement.previousElementSibling.firstElementChild.checked;
     indentBtn.parentElement.previousElementSibling.style.opacity = indentBtn.disabled ? '.7' : '1';
 
     if (indentBtn.disabled) indentBtn.checked = false;
 }
 
 ratingBtn.addEventListener('click', () => {
-    toggleIndentButton(ratingPostGameBtn, ratingBtn);
+    toggleIndentSetting(ratingPostGameBtn);
 })
 
 usernameBtn.addEventListener('click', () => {
-    toggleIndentButton(usernamePostGameBtn, usernameBtn)
+    toggleIndentSetting(usernamePostGameBtn)
+})
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    let data = new FormData(form);
+    let userPreferences = {
+        avatar: false,
+        badge: false,
+        flag: false,
+        flair: false,
+        rating: false,
+        rating_postgame: false,
+        username: false,
+        username_postgame: false
+    };
+    for (const key of data.keys()) {
+        userPreferences[`${key}`] = true;
+    }
+    await browser.storage.local.set({ userPreferences });
 })
 
 
 // dev convenience, should pull storage.local and persist settings
-document.addEventListener('DOMContentLoaded', () => {
-    toggleIndentButton(usernamePostGameBtn, usernameBtn)
-    toggleIndentButton(ratingPostGameBtn, ratingBtn)
+document.addEventListener('DOMContentLoaded', async () => {
+
+    try {
+        const { userPreferences } = await browser.storage.local.get('userPreferences');
+
+        for (const [key, value] of Object.entries(userPreferences)) {
+            checkboxBtns[`${key}`].checked = value;
+
+            if (key.includes('postgame')) toggleIndentSetting(checkboxBtns[`${key}`]);
+        }
+    } catch {
+        console.error('User Preferences not found.')
+    }
 })
 
