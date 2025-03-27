@@ -1,6 +1,8 @@
 const checkAllBtn = document.getElementById('check-all');
 const checkboxBtns = document.getElementsByTagName('input');
 
+const submit = document.getElementById('submit');
+
 /**
  * Checks or unchecks all `btnsToCheck`.
  * @param {HTMLCollectionOf<HTMLInputElement>} btnsToCheck 
@@ -25,8 +27,30 @@ const toggleIndentSetting = (indentBtn) => {
     if (indentBtn.disabled) indentBtn.checked = false;
 }
 
+
+// Detects if all buttons are checked/unchecked and updates Check All button as needed
+// Refactor nested loop sucks
+// can possibly be combined with DOMContentLoaded
+for (const btn of checkboxBtns) {
+    btn.addEventListener('click', () => {
+        submit.disabled = false;
+
+        let allChecked = true;
+        let allUnchecked = true;
+
+        for (const btnEvent of checkboxBtns) {
+            if (!btnEvent.checked) allChecked = false;
+            if (btnEvent.checked) allUnchecked = false;
+        }
+
+        if (allChecked === true) checkAllBtn.textContent = 'Uncheck All';
+        if (allUnchecked === true) checkAllBtn.textContent = 'Check All';
+    })
+}
+
 // Refactor better way to handle conditional button switch
 checkAllBtn.addEventListener('click', (e) => {
+    submit.disabled = false;
     e.preventDefault();
     if (checkAllBtn.textContent == 'Check All') {
         checkAllButtons(checkboxBtns, true);
@@ -43,6 +67,8 @@ document.getElementById('rating').addEventListener('click', (e) => toggleIndentS
 
 document.getElementById('settings-form').addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    submit.disabled = true;
 
     let data = new FormData(e.target);
     let userPreferences = {
