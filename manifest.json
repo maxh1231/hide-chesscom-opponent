@@ -19,10 +19,14 @@
   "options_ui": {
     "page": "options/index.html"
   },
+  "background": {
+    "scripts": [
+      "init-storage.js"
+    ]
+  },
   "content_scripts": [
     {
       "matches": [
-        "https://www.chess.com/*",
         "https://www.chess.com/play/online",
         "https://www.chess.com/game/*",
         "https://www.chess.com/game/live/*"

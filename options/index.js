@@ -3,6 +3,9 @@ const checkboxBtns = document.getElementsByTagName('input');
 
 const submit = document.getElementById('submit');
 
+// Simulate default settings
+
+
 /**
  * Checks or unchecks all `btnsToCheck`.
  * @param {HTMLCollectionOf<HTMLInputElement>} btnsToCheck 
@@ -41,6 +44,7 @@ for (const btn of checkboxBtns) {
         for (const btnEvent of checkboxBtns) {
             if (!btnEvent.checked) allChecked = false;
             if (btnEvent.checked) allUnchecked = false;
+            // btn.value
         }
 
         if (allChecked === true) checkAllBtn.textContent = 'Uncheck All';
@@ -71,6 +75,7 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
     submit.disabled = true;
 
     let data = new FormData(e.target);
+
     let userPreferences = {
         avatar: false,
         badge: false,
@@ -81,6 +86,7 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
         username: false,
         username_postgame: false
     };
+
     for (const key of data.keys()) {
         userPreferences[`${key}`] = true;
     }
@@ -89,6 +95,7 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
 
 /**
  * Retrieves user preferences and applies them
+ * Is eventListener necessary?
  */
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -100,6 +107,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             if (key.includes('postgame')) toggleIndentSetting(checkboxBtns[`${key}`]);
         }
     } catch {
-        console.error('User Preferences not found.');
+        console.error('User Preferences not found');
     }
 });
