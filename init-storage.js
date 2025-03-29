@@ -4,8 +4,10 @@ browser.runtime.onInstalled.addListener(() => {
         badge: true,
         flag: true,
         flair: true,
+        grudge: true,
         rating: true,
         rating_postgame: false,
+        title: true,
         username: true,
         username_postgame: false
     };

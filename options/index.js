@@ -1,10 +1,6 @@
 const checkAllBtn = document.getElementById('check-all');
 const checkboxBtns = document.getElementsByTagName('input');
-
 const submit = document.getElementById('submit');
-
-// Simulate default settings
-
 
 /**
  * Checks or unchecks all `btnsToCheck`.
@@ -71,9 +67,7 @@ document.getElementById('rating').addEventListener('click', (e) => toggleIndentS
 
 document.getElementById('settings-form').addEventListener('submit', async (e) => {
     e.preventDefault();
-
     submit.disabled = true;
-
     let data = new FormData(e.target);
 
     let userPreferences = {
@@ -81,8 +75,10 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
         badge: false,
         flag: false,
         flair: false,
+        grudge: false,
         rating: false,
         rating_postgame: false,
+        title: false,
         username: false,
         username_postgame: false
     };

@@ -3,50 +3,61 @@ browser.storage.local.get('userPreferences').then((data) => {
     hide = data.userPreferences;
 });
 
-const gameoverObserver = new MutationObserver((mutation) => {
-    // console.log('gameover observer', mutation);
+const hideElement = (element, isAvatar = false) => {
+    if (element && !isAvatar) element.style.display = 'none';
+    else if (element && isAvatar) element.setAttribute('src', 'https://www.chess.com/bundles/web/images/noavatar_l.84a92436@3x.gif');
+}
+
+/**
+ * Observes the creation/deletion of direct child elements of div.player-component.player-top
+ * Hides Grudge Score & Avatar
+ */
+const playerTop = document.querySelector('div.player-component.player-top');
+const playerTopObserver = new MutationObserver(() => {
+    if (hide.avatar) hideElement(playerTop.querySelector('div.player-avatar-component > img'), true);
+    if (hide.grudge) hideElement(playerTop.querySelector('div.grudge-score-component'));
 })
-gameoverObserver.observe(document.querySelector('div.player-tagline'), { childList: true })
+playerTopObserver.observe(playerTop, { childList: true });
 
-
-const avatarAndGrudgeObserver = new MutationObserver((mutation) => {
-    // console.log('avatar/grudge observer', mutation);
-})
-avatarAndGrudgeObserver.observe(document.querySelector('div.player-component.player-top'), { childList: true })
-
-const oppTagline = document.querySelector('div.user-tagline-component');
-
-const oppTaglinObserver = new MutationObserver((mutation) => {
-    // console.log('tagline observer', mutation);
-
-    if (hide.badge) hideElement(oppTagline.querySelector('a.mvp-badge-component'))
-    if (hide.flag) hideElement(oppTagline.querySelector('div.country-flags-component'));
-    if (hide.flair) hideElement(oppTagline.querySelector('img.flair-rpc-component'));
-    if (hide.rating) hideElement(oppTagline.querySelector('span.user-tagline-rating'));
-    if (hide.username) hideElement(oppTagline.querySelector('a.user-username-component'));
+/**
+ * Observes the creation/deletion of direct child elements of div.user-tagline-component
+ * Hides Badge, Flag, Flair, Rating, Title, Username
+ */
+const userTaglineComponent = document.querySelector('div.user-tagline-component');
+const userTaglineComponentObserver = new MutationObserver(() => {
+    if (hide.badge) hideElement(userTaglineComponent.querySelector('a.mvp-badge-component'));
+    if (hide.flag) hideElement(userTaglineComponent.querySelector('div.country-flags-component'));
+    if (hide.flair) hideElement(userTaglineComponent.querySelector('img.flair-rpc-component'));
+    if (hide.rating) hideElement(userTaglineComponent.querySelector('span.user-tagline-rating'));
+    if (hide.title) hideElement(userTaglineComponent.querySelector('a.user-chess-title-component'));
+    if (hide.username) hideElement(userTaglineComponent.querySelector('a.user-username-component'));
 });
-oppTaglinObserver.observe(oppTagline, { childList: true });
+userTaglineComponentObserver.observe(userTaglineComponent, { childList: true });
 
-const hideElement = (element) => {
-    if (element) element.style.display = 'none'
-}
+/**
+ * Observes the creation/deletion of direct child elements of div.player-tagline
+ * Hides Rating in post-game 
+ */
+const playerTagline = document.querySelector('div.player-tagline');
+const playerTaglineObserver = new MutationObserver(() => {
+    if (hide.rating_postgame) hideElement(playerTagline.querySelector('div.player-game-over-component > span.rating-score-rating'));
+})
+playerTaglineObserver.observe(playerTagline, { childList: true });
 
-const hideAvatar = () => {
-    let oppImage = playerTop.querySelector('div.player-avatar-component > img');
-    if (oppImage) oppImage.setAttribute('src', 'https://www.chess.com/bundles/web/images/noavatar_l.84a92436@3x.gif');
-}
-
-
-
-// console.log(browser.storage.local.get('userPreferences'))
-
-// const hideElements = () => {
-
-//     let newGameMsg = document.querySelector('div.game-start-message-component');
-//     if (newGameMsg) newGameMsg.style.display = 'none';
-
-//     let rateOppMsg = document.querySelector('div.game-rate-sport-message-component');
-//     if (rateOppMsg) rateOppMsg.style.display = 'none';
-// }
-
-
+/**
+ * Observes the creation/deletion of direct child elements of div.chat-room-chat
+ * Hides Username in game-start message
+ * Hides Username in post-game
+ * NOTE: STILL MUST HIDE/ALTER GAME OVER MESSAGE
+ */
+console.log('sidebar parent:', document.querySelector('div#board-layout-sidebar'));
+console.log('sidebar child:', document.querySelector('div.sidebar-component'));
+console.log('grandparent:', document.querySelector('div.resizable-chat-area-component.resizable-chat-area-resizable'));
+console.log('parent:', document.querySelector('div.resizable-chat-area-content'));
+console.log('chat:', document.querySelector('div.chat-room-chat'));
+// console.log(chatRoom)
+// const chatRoomObserver = new MutationObserver(() => {
+//     if (hide.username) hideElement(chatRoom.querySelector('div.game-start-message-component'));
+//     if (hide.username_postgame) hideElement(chatRoom.querySelector('div.game-rate-sport-message-component'));
+// })
+// chatRoomObserver.observe(chatRoom, { childList: true });

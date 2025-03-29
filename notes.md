@@ -11,11 +11,10 @@ Unnecessary mutataions observed:
 
 # SPA?
 
-Extension is loaded on all (or most) chess.com routes. I think this may be required, if extension is not loaded on route prior to User's game, extension does not work properly until a page refresh. Whereas if the extension is loaded on prior route, it does work.
+Upon starting a game from `https://www.chess.com/play/online`, script does not execute until a refresh.
 
-This means script running on all routes. A simple conditional for `document.location.href` may fix this. 
-
-However, may be hard to distingush the user playing a game compared to other routes.
+- Route event listener?
+- dom loaded event listener?
 
 Route prior to User playing a game: `https://www.chess.com/play/online`
 
@@ -43,15 +42,3 @@ We want everything after \n. Can possibly pull a hardcoded index? NOPE data not 
 I think it makes the most sense to get the new rating like so: 
 `(div.game-over-message-component > a.user-username).nextSibling` replace its textContent with everything after the \n
 then hide `(div.game-over-message-component > a.user-username)`
-
-#### opp's tagline
-Opp's rating and +- displays
-![alt text](image-2.png)
-
-can target this by `(div.player-component.player-top > div.player-tagline > player-game-over-component > span.rating-score-rating)
-
-is this important?
-
-# options insp
-
-![alt text](image-3.png)
