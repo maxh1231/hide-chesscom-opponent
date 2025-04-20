@@ -1,38 +1,29 @@
 {
-  "manifest_version": 2,
-  "name": "chess-name-hider",
-  "version": "1.0",
-  "description": "",
-  "icons": {
-    "48": "assets/block-48.png",
-    "96": "assets/block-96.png"
-  },
-  "permissions": [
-    "activeTab",
-    "storage"
-  ],
-  "browser_action": {
-    "default_icon": "assets/block-32.png",
-    "default_title": "test title",
-    "default_popup": "popup/index.html"
-  },
-  "options_ui": {
-    "page": "options/index.html"
-  },
-  "background": {
-    "scripts": [
-      "init-storage.js"
+    "manifest_version": 2,
+    "name": "chess-name-hider",
+    "version": "1.0",
+    "description": "",
+    "icons": {
+        "48": "assets/block-48.png",
+        "96": "assets/block-96.png"
+    },
+    "permissions": ["activeTab", "storage", "webNavigation"],
+    "browser_action": {
+        "default_icon": "assets/block-32.png",
+        "default_title": "test title",
+        "default_popup": "popup/index.html"
+    },
+    "options_ui": {
+        "page": "options/index.html"
+    },
+    "background": {
+        "scripts": ["init-storage.js", "trigger.js"],
+        "persistent": false
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.chess.com/*"],
+            "js": ["hide-opponent.js"]
+        }
     ]
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "https://www.chess.com/game/*",
-        "https://www.chess.com/game/live/*"
-      ],
-      "js": [
-        "hide-opponent.js"
-      ]
-    }
-  ]
 }

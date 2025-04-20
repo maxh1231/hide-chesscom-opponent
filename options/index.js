@@ -4,28 +4,30 @@ const submit = document.getElementById('submit');
 
 /**
  * Checks or unchecks all `btnsToCheck`.
- * @param {HTMLCollectionOf<HTMLInputElement>} btnsToCheck 
- * @param {boolean} doCheck 
+ * @param {HTMLCollectionOf<HTMLInputElement>} btnsToCheck
+ * @param {boolean} doCheck
  */
 const checkAllButtons = (btnsToCheck, doCheck) => {
     for (let btn of btnsToCheck) {
         btn.checked = doCheck;
         if (btn.name.includes('postgame')) toggleIndentSetting(btn);
     }
-}
+};
 
 /**
  * Disables and unchecks input if parent input is unchecked.
  * Enables input if parent input is checked.
- * @param {HTMLInputElement} indentBtn 
+ * @param {HTMLInputElement} indentBtn
  */
 const toggleIndentSetting = (indentBtn) => {
-    indentBtn.disabled = !indentBtn.parentElement.parentElement.previousElementSibling.firstElementChild.checked;
-    indentBtn.parentElement.previousElementSibling.style.opacity = indentBtn.disabled ? '.7' : '1';
+    indentBtn.disabled =
+        !indentBtn.parentElement.parentElement.previousElementSibling
+            .firstElementChild.checked;
+    indentBtn.parentElement.previousElementSibling.style.opacity =
+        indentBtn.disabled ? '.7' : '1';
 
     if (indentBtn.disabled) indentBtn.checked = false;
-}
-
+};
 
 // Detects if all buttons are checked/unchecked and updates Check All button as needed
 // Refactor nested loop sucks
@@ -45,7 +47,7 @@ for (const btn of checkboxBtns) {
 
         if (allChecked === true) checkAllBtn.textContent = 'Uncheck All';
         if (allUnchecked === true) checkAllBtn.textContent = 'Check All';
-    })
+    });
 }
 
 // Refactor better way to handle conditional button switch
@@ -55,39 +57,54 @@ checkAllBtn.addEventListener('click', (e) => {
     if (checkAllBtn.textContent == 'Check All') {
         checkAllButtons(checkboxBtns, true);
         checkAllBtn.textContent = 'Uncheck All';
-    }
-    else if (checkAllBtn.textContent == 'Uncheck All') {
+    } else if (checkAllBtn.textContent == 'Uncheck All') {
         checkAllButtons(checkboxBtns, false);
         checkAllBtn.textContent = 'Check All';
     }
-})
-
-document.getElementById('username').addEventListener('click', (e) => toggleIndentSetting(e.target.parentElement.nextElementSibling.lastElementChild.firstElementChild));
-document.getElementById('rating').addEventListener('click', (e) => toggleIndentSetting(e.target.parentElement.nextElementSibling.lastElementChild.firstElementChild));
-
-document.getElementById('settings-form').addEventListener('submit', async (e) => {
-    e.preventDefault();
-    submit.disabled = true;
-    let data = new FormData(e.target);
-
-    let userPreferences = {
-        avatar: false,
-        badge: false,
-        flag: false,
-        flair: false,
-        grudge: false,
-        rating: false,
-        rating_postgame: false,
-        title: false,
-        username: false,
-        username_postgame: false
-    };
-
-    for (const key of data.keys()) {
-        userPreferences[`${key}`] = true;
-    }
-    await browser.storage.local.set({ userPreferences });
 });
+
+document
+    .getElementById('username')
+    .addEventListener('click', (e) =>
+        toggleIndentSetting(
+            e.target.parentElement.nextElementSibling.lastElementChild
+                .firstElementChild
+        )
+    );
+document
+    .getElementById('rating')
+    .addEventListener('click', (e) =>
+        toggleIndentSetting(
+            e.target.parentElement.nextElementSibling.lastElementChild
+                .firstElementChild
+        )
+    );
+
+document
+    .getElementById('settings-form')
+    .addEventListener('submit', async (e) => {
+        e.preventDefault();
+        submit.disabled = true;
+        let data = new FormData(e.target);
+
+        let userPreferences = {
+            avatar: false,
+            badge: false,
+            flag: false,
+            flair: false,
+            grudge: false,
+            rating: false,
+            rating_postgame: false,
+            title: false,
+            username: false,
+            username_postgame: false,
+        };
+
+        for (const key of data.keys()) {
+            userPreferences[`${key}`] = true;
+        }
+        await browser.storage.local.set({ userPreferences });
+    });
 
 /**
  * Retrieves user preferences and applies them
@@ -95,12 +112,14 @@ document.getElementById('settings-form').addEventListener('submit', async (e) =>
  */
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        const { userPreferences } = await browser.storage.local.get('userPreferences');
+        const { userPreferences } =
+            await browser.storage.local.get('userPreferences');
 
         for (const [key, value] of Object.entries(userPreferences)) {
             checkboxBtns[`${key}`].checked = value;
 
-            if (key.includes('postgame')) toggleIndentSetting(checkboxBtns[`${key}`]);
+            if (key.includes('postgame'))
+                toggleIndentSetting(checkboxBtns[`${key}`]);
         }
     } catch {
         console.error('User Preferences not found');
