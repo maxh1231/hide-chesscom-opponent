@@ -17,7 +17,7 @@
         "page": "options/index.html"
     },
     "background": {
-        "scripts": ["init-storage.js", "trigger.js"],
+        "scripts": ["background/init-storage.js", "background/trigger.js"],
         "persistent": false
     },
     "content_scripts": [

@@ -1,106 +1,44 @@
 <!doctype html>
 
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="color-scheme" content="dark light" />
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-    <h1>OPTIONS</h1>
-    <h2>Hide your Opponent:</h2>
-    <form id="settings-form" class="checkbox-container">
-
-        <div class="setting-item">
-            <label for="grudge">Grudge Score</label>
-            <div class="setting-item-checkbox">
-                <input checked id="grudge" type="checkbox" name="grudge">
-                <label for="grudge">Hides your opponent's score against you in tournaments and arena.</label>
-            </div>
-        </div>
-
-        <div class="setting-item">
-            <label for="avatar">Avatar</label>
-            <div class="setting-item-checkbox">
-                <input checked id="avatar" type="checkbox" name="avatar">
-                <label for="avatar">Replaces your opponent's avatar image with the default Chess.com avatar.</label>
-            </div>
-        </div>
-
-        <div class="setting-item">
-            <label for="username">Username</label>
-            <div class="setting-item-checkbox">
-                <input checked id="username" type="checkbox" name="username">
-                <label for="username">Hides your opponent's username.</label>
-            </div>
-
-            <div class="indented-item">
-                <label for="username-postgame">Post Game</label>
+    <body>
+        <h1>OPTIONS</h1>
+        <h2>Hide your Opponent:</h2>
+        <form id="settings-form" class="checkbox-container">
+            <div class="setting-item">
+                <label for="rating">Rating</label>
                 <div class="setting-item-checkbox">
-                    <input id="username-postgame" type="checkbox" name="username_postgame">
-                    <label for="username-postgame">After game ends, hide opponent's username reported in the
-                        chat.</label>
+                    <input checked id="rating" type="checkbox" name="rating" />
+                    <label for="rating">Hides your opponent's rating.</label>
+                </div>
+
+                <div class="indented-item">
+                    <label for="rating-postgame">Post Game</label>
+                    <div class="setting-item-checkbox">
+                        <input
+                            id="rating-postgame"
+                            type="checkbox"
+                            name="rating_postgame"
+                        />
+                        <label for="rating-postgame"
+                            >After game ends, continue to hide opponent's
+                            rating.</label
+                        >
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="setting-item">
-            <label for="rating">Rating</label>
-            <div class="setting-item-checkbox">
-                <input checked id="rating" type="checkbox" name="rating">
-                <label for="rating">Hides your opponent's rating.</label>
+            <div class="form-actions">
+                <button id="check-all">Check All</button>
+                <button disabled type="submit" id="submit">Save</button>
             </div>
-
-            <div class="indented-item">
-                <label for="rating-postgame">Post Game</label>
-                <div class="setting-item-checkbox">
-                    <input id="rating-postgame" type="checkbox" name="rating_postgame">
-                    <label for="rating-postgame">After game ends, continue to hide opponent's rating.</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="setting-item">
-            <label for="title">Title</label>
-            <div class="setting-item-checkbox">
-                <input checked id="title" type="checkbox" name="title">
-                <label for="title">Hides your opponent's FIDE/Chess Federation title. I.E. GM, IM, CM, etc.</label>
-            </div>
-        </div>
-
-        <div class="setting-item">
-            <label for="badge">Membership</label>
-            <div class="setting-item-checkbox">
-                <input checked id="badge" type="checkbox" name="badge">
-                <label for="badge">Hides your opponent's Gold, Platinum, or Diamond membership badge.</label>
-            </div>
-        </div>
-
-        <div class="setting-item">
-            <label for="flag">Country Flag</label>
-            <div class="setting-item-checkbox">
-                <input checked id="flag" type="checkbox" name="flag">
-                <label for="flag">Hides your opponent's country's flag.</label>
-            </div>
-        </div>
-
-        <div class="setting-item">
-            <label for="flair">Flair</label>
-            <div class="setting-item-checkbox">
-                <input checked id="flair" type="checkbox" name="flair">
-                <label for="flair">Hides your opponent's flair.</label>
-            </div>
-        </div>
-
-        <div class="form-actions">
-            <button id="check-all">Check All</button>
-            <button disabled type="submit" id="submit">Save</button>
-        </div>
-
-    </form>
-</body>
-<script src="index.js"></script>
-
+        </form>
+    </body>
+    <script src="index.js"></script>
 </html>
