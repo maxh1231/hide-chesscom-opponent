@@ -1,14 +1,9 @@
 browser.runtime.onInstalled.addListener(() => {
     let userPreferences = {
-        avatar: true,
-        badge: true,
-        flag: true,
-        flair: true,
-        rating: true,
-        rating_postgame: false,
-        title: true,
-        username: true,
-        username_postgame: false,
+        enabled: true,
+        postgame_rating: true,
+        postgame_chat_gameover: true,
+        postgame_chat_vote: true,
     };
     browser.storage.local.set({ userPreferences });
 });
