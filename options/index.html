@@ -8,13 +8,11 @@
     </head>
 
     <body>
-        <h1>OPTIONS</h1>
-        <h2>Hide your Opponent:</h2>
         <form id="settings-form" class="checkbox-container">
             <div class="setting-item">
                 <label for="enable">Enable</label>
                 <div class="setting-item-checkbox">
-                    <input checked id="enable" type="checkbox" name="enable" />
+                    <input id="enable" type="checkbox" name="enable" />
                     <label for="enable">Hide your opponent.</label>
                 </div>
 
@@ -24,7 +22,7 @@
                         <input
                             id="postgame-rating"
                             type="checkbox"
-                            name="postgame-rating"
+                            name="postgame_rating"
                         />
                         <label for="postgame-rating"
                             >After game ends, continue to hide opponent's
@@ -33,6 +31,8 @@
                     </div>
                 </div>
             </div>
+
+            <br />
 
             <div class="setting-item">
                 <label>Chatbox</label>
@@ -43,7 +43,7 @@
                         <input
                             id="postgame-chat-gameover"
                             type="checkbox"
-                            name="postgame-chat-gameover"
+                            name="postgame_chat_gameover"
                         />
                         <label for="postgame-chat-gameover"
                             >Hide the Game Over component.</label
@@ -57,7 +57,7 @@
                         <input
                             id="postgame-chat-vote"
                             type="checkbox"
-                            name="postgame-chat-vote"
+                            name="postgame_chat_vote"
                         />
                         <label for="postgame-chat-vote"
                             >Hide the User Voting component.
@@ -67,8 +67,7 @@
             </div>
 
             <div class="form-actions">
-                <button id="check-all">Check All</button>
-                <button disabled type="submit" id="submit">Save</button>
+                <button type="submit" id="submit">Save</button>
             </div>
         </form>
     </body>
