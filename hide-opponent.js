@@ -1,57 +1,82 @@
-const hideOrModifyElement = (element, isAvatar = false) => {
-    if (element && isAvatar)
-        element.setAttribute(
-            'src',
-            'https://www.chess.com/bundles/web/images/noavatar_l.84a92436@3x.gif'
-        );
-    else if (element) element.style.display = 'none';
+/**
+ * Toggles the provided `element`'s CSS visibility property to `hidden`.
+ * @param {HTMLElement} element Element to toggle
+ * @returns {void}
+ */
+const toggleElement = (element) => {
+    if (element) element.style.visibility = 'hidden';
 };
 
-browser.runtime.onMessage.addListener(() => {
-    hideOrModifyElement(document.querySelector('div.user-tagline-component'));
-    hideOrModifyElement(
-        document.querySelector('div.player-avatar-component > img'),
-        true
+/**
+ * Creates a MutationObserver with the provided `elementToObserve` and creates and hides each provided `selectorsToHide`.
+ * @param {HTMLDivElement} elementToObserve Element to attatch MutationObserver to
+ * @param {string[]} selectorsToHide element selectors to hide
+ * @returns {void}
+ */
+const createObserver = (elementToObserve, selectorsToHide) => {
+    const observer = new MutationObserver(() => {
+        console.log('Mutation Observed in: ', elementToObserve);
+        selectorsToHide.forEach((selector) => {
+            document
+                .querySelectorAll(selector)
+                .forEach((el) => toggleElement(el));
+        });
+    });
+    observer.observe(elementToObserve, { childList: true });
+    console.log(
+        `Observer created: `,
+        observer,
+        `Element: `,
+        elementToObserve,
+        `Hiding: `,
+        selectorsToHide
     );
+};
+
+/**
+ * Recursively validates a `selector`'s existence in the ODM before passing it to provided `callback`. If `selector` is invalid, reattempts 10 times with .5 second intervals.
+ * @param {string} selector Element selector to validate
+ * @param {(element: Element) => void} callback Function to call upon successful validation
+ * @param {number} attempts Number of current recursive attempts
+ * @returns {void | null}
+ */
+const validateElement = (selector, callback, attempts = 1) => {
+    if (attempts > 10) return null;
+
+    const element = document.querySelector(selector);
+
+    if (element) {
+        console.log(`Element valid: `, element);
+        callback(element);
+    } else {
+        console.log(`Element ${selector} invalid. Retrying...`);
+        setTimeout(() => validateElement(selector, callback, attempts + 1), 50);
+    }
+};
+
+browser.runtime.onMessage.addListener(async () => {
+    const { userPreferences } =
+        await browser.storage.local.get('userPreferences');
+    console.log(userPreferences);
+    toggleElement(document.querySelector('div.user-tagline-component'));
+    toggleElement(document.querySelector('div.player-avatar-component > img'));
     document
         .querySelectorAll('div.game-start-message-component')
         .forEach((el) => {
-            hideOrModifyElement(el);
+            toggleElement(el);
         });
 
-    const playerTagline = document.querySelector('div.player-tagline');
-    const playerTaglineObserver = new MutationObserver(() => {
-        try {
-            hideOrModifyElement(
-                playerTagline.querySelector('div.player-game-over-component')
-            );
-        } catch (err) {
-            console.error(err);
-        }
+    validateElement('div.player-tagline', (element) => {
+        const elementsToHide = ['div.player-game-over-component'];
+        createObserver(element, elementsToHide);
     });
-    playerTaglineObserver.observe(playerTagline, { childList: true });
 
-    const chatRoom = document.querySelector('div.chat-room-chat');
-    const chatRoomObserver = new MutationObserver(() => {
-        try {
-            document
-                .querySelectorAll('div.game-over-message-component')
-                .forEach((el) => {
-                    hideOrModifyElement(el);
-                });
-        } catch (err) {
-            console.error(err);
-        }
+    validateElement('div.chat-room-chat', (element) => {
+        const elementsToHide = [
+            'div.game-over-message-component',
+            'div.game-rate-sport-message-component',
+        ];
 
-        try {
-            document
-                .querySelectorAll('div.game-rate-sport-message-component')
-                .forEach((el) => {
-                    hideOrModifyElement(el);
-                });
-        } catch (err) {
-            console.error(err);
-        }
+        createObserver(element, elementsToHide);
     });
-    chatRoomObserver.observe(chatRoom, { childList: true });
 });
