@@ -15,7 +15,6 @@ const toggleElement = (element) => {
  */
 const createObserver = (elementToObserve, selectorsToHide) => {
     const observer = new MutationObserver(() => {
-        console.log('Mutation Observed in: ', elementToObserve);
         selectorsToHide.forEach((selector) => {
             document
                 .querySelectorAll(selector)
@@ -23,14 +22,6 @@ const createObserver = (elementToObserve, selectorsToHide) => {
         });
     });
     observer.observe(elementToObserve, { childList: true });
-    console.log(
-        `Observer created: `,
-        observer,
-        `Element: `,
-        elementToObserve,
-        `Hiding: `,
-        selectorsToHide
-    );
 };
 
 /**
@@ -46,10 +37,8 @@ const validateElement = (selector, callback, attempts = 1) => {
     const element = document.querySelector(selector);
 
     if (element) {
-        console.log(`Element valid: `, element);
         callback(element);
     } else {
-        console.log(`Element ${selector} invalid. Retrying...`);
         setTimeout(() => validateElement(selector, callback, attempts + 1), 50);
     }
 };
@@ -57,9 +46,7 @@ const validateElement = (selector, callback, attempts = 1) => {
 browser.runtime.onMessage.addListener(async () => {
     const { userPreferences } =
         await browser.storage.local.get('userPreferences');
-
     if (!userPreferences.enable) return;
-
     toggleElement(document.querySelector('div.user-tagline-component'));
     toggleElement(document.querySelector('div.player-avatar-component > img'));
     document
