@@ -1,0 +1,5 @@
+div.player-component.player-top
+    > div.player-tagline
+    > div.player-game-over-component {
+    visibility: hidden;
+}

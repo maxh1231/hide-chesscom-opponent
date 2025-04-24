@@ -7,7 +7,13 @@
         "48": "assets/block-48.png",
         "96": "assets/block-96.png"
     },
-    "permissions": ["activeTab", "storage", "webNavigation"],
+    "permissions": [
+        "activeTab",
+        "storage",
+        "webNavigation",
+        "scripting",
+        "https://www.chess.com/game/*"
+    ],
     "browser_action": {
         "default_icon": "assets/block-32.png",
         "default_title": "test title",
