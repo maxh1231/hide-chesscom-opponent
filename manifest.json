@@ -4,8 +4,8 @@
     "version": "1.0",
     "description": "",
     "icons": {
-        "48": "assets/block-48.png",
-        "96": "assets/block-96.png"
+        "48": "assets/images/block-48.png",
+        "96": "assets/images/block-96.png"
     },
     "permissions": [
         "activeTab",
@@ -15,7 +15,7 @@
         "https://www.chess.com/game/*"
     ],
     "browser_action": {
-        "default_icon": "assets/block-32.png",
+        "default_icon": "assets/images/block-32.png",
         "default_title": "test title",
         "default_popup": "popup/index.html"
     },

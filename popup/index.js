@@ -15,7 +15,9 @@ const icon = document.getElementById('power');
 const updateIcon = (isEnabled) => {
     icon.setAttribute(
         'src',
-        isEnabled ? '../assets/power-off.png' : '../assets/power-on.png'
+        isEnabled
+            ? '../assets/images/power-off.png'
+            : '../assets/images/power-on.png'
     );
 };
 
