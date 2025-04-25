@@ -12,7 +12,7 @@
     margin: 10px 0;
 }
 
-.setting-item>label {
+.setting-name {
     font-weight: bold;
     font-size: 1.25em;
     padding-left: 4px;
@@ -24,8 +24,8 @@
     margin: 5px 0;
 }
 
-.setting-item-checkbox>label {
-    opacity: .7;
+.setting-item-checkbox > label {
+    opacity: 0.7;
     margin-left: 2px;
 }
 
@@ -34,7 +34,7 @@
     margin-left: 30px;
 }
 
-.indented-item>label {
+.indented-item > label {
     font-weight: bold;
     font-size: 1.25em;
     padding-left: 4px;

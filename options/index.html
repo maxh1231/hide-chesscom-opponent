@@ -10,7 +10,7 @@
     <body>
         <form id="settings-form" class="checkbox-container">
             <div class="setting-item">
-                <label for="enable">Enable</label>
+                <label class="setting-name" for="enable">Enable</label>
                 <div class="setting-item-checkbox">
                     <input id="enable" type="checkbox" name="enable" />
                     <label for="enable">Hide your opponent.</label>
@@ -35,10 +35,12 @@
             <br />
 
             <div class="setting-item">
-                <label>Chatbox</label>
+                <label class="setting-name">Chatbox</label>
 
                 <div class="indented-item">
-                    <label for="postgame-chat-gameover">Game Over</label>
+                    <label class="setting-name" for="postgame-chat-gameover"
+                        >Game Over</label
+                    >
                     <div class="setting-item-checkbox">
                         <input
                             id="postgame-chat-gameover"
@@ -52,7 +54,9 @@
                 </div>
 
                 <div class="indented-item">
-                    <label for="postgame-chat-vote">User Voting</label>
+                    <label class="setting-name" for="postgame-chat-vote"
+                        >User Voting</label
+                    >
                     <div class="setting-item-checkbox">
                         <input
                             id="postgame-chat-vote"

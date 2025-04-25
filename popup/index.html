@@ -7,8 +7,57 @@
 
     <body>
         <div id="popup-content">
-            <h1>Popup</h1>
-            <img id="power" src="" alt="power" />
+            <div class="setting-item">
+                <label for="enable">Enable</label>
+                <div class="setting-item-checkbox">
+                    <input
+                        id="enable"
+                        name="enable"
+                        type="checkbox"
+                        class="toggle"
+                    />
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label for="">Post Game:</label>
+            </div>
+
+            <div class="setting-item">
+                <label for="postgame-rating">Rating</label>
+                <div class="setting-item-checkbox">
+                    <input
+                        id="postgame-rating"
+                        name="postgame_rating"
+                        class="toggle"
+                        type="checkbox"
+                    />
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label for="postgame-chat-gameover">Game Over</label>
+                <div class="setting-item-checkbox">
+                    <input
+                        id="postgame-chat-gameover"
+                        name="postgame_chat_gameover"
+                        type="checkbox"
+                        class="toggle"
+                    />
+                </div>
+            </div>
+
+            <div class="setting-item">
+                <label for="postgame-chat-vote">User Voting</label>
+                <div class="setting-item-checkbox">
+                    <input
+                        id="postgame-chat-vote"
+                        name="postgame_chat_vote"
+                        type="checkbox"
+                        class="toggle"
+                    />
+                </div>
+            </div>
         </div>
     </body>
     <script src="index.js"></script>

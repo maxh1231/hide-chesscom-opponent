@@ -1,4 +1,118 @@
-html,
+:root {
+    /* Light Mode Defaults */
+    --bg-layer1: #f9f9fb;
+    --bg-layer2: #ffffff;
+    --bg-layer3: #f0f0f4;
+
+    --text-primary: #15141a;
+    --text-secondary: #5b5b66;
+    --active: #00ddff;
+    --disabled: rgba(21, 20, 26, 0.4);
+    --error: #c50042;
+    --border: #e0e0e6;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-layer1: #2b2a33;
+        --bg-layer2: #42414d;
+        --bg-layer3: #1c1b22;
+        --text-primary: #fbfbfe;
+        --text-secondary: #cfcfd8;
+        --disabled: rgba(251, 251, 254, 0.4);
+        --error: #ff9aa2;
+    }
+}
+
 body {
-    width: 100px;
+    background-color: var(--bg-layer2);
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
+        Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+.toggle {
+    appearance: none;
+    position: relative;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 3.2em;
+    height: 1.6em; /* Slightly increased to better center the knob */
+    cursor: pointer;
+    border-radius: 1em;
+    overflow: hidden;
+    background-color: var(--bg-layer1);
+    transition: background ease 0.5s;
+    border: 1px solid var(--border);
+    padding: 0; /* Removed padding */
+}
+
+.toggle:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 0.2em;
+    transform: translateY(-50%);
+    z-index: 2;
+    width: 1em;
+    height: 1em;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform cubic-bezier(0.3, 1.5, 0.7, 1) 0.3s;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.toggle:checked {
+    background-color: var(--active);
+    border: 1px solid var(--active);
+}
+
+.toggle:checked:before {
+    background-color: var(--bg-layer3);
+    transform: translate(1.7em, -50%);
+}
+
+.checkbox-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 5px;
+}
+
+.setting-item {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+    margin: 10px 0;
+}
+
+.setting-item > label {
+    color: var(--text-primary);
+    font-weight: bold;
+    font-size: 1.25em;
+    padding-left: 4px;
+}
+
+.setting-item-checkbox {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.setting-item-checkbox > label {
+    color: var(--text-primary);
+    opacity: 0.7;
+    margin-left: 2px;
+}
+
+.indented-item {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.indented-item > label {
+    font-weight: bold;
+    font-size: 1.25em;
+    padding-left: 4px;
 }
