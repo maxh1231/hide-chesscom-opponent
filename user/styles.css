@@ -19,6 +19,7 @@
     --disabled: rgba(21, 20, 26, 0.4);
     --error: #c50042;
     --border: #e0e0e6;
+    --break: #c4c4c5;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -43,25 +44,39 @@
         --active: #00ddff;
         --disabled: rgba(251, 251, 254, 0.4);
         --error: #ff9aa2;
+        --break: #71707a;
+    }
+
+    .options {
+        background-color: #23222b;
+        padding: 10px 10px;
+    }
+
+    .popup-content {
+        background-color: var(--color-grey-30);
     }
 }
 body {
-    background-color: var(--bg-layer2);
     font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
         Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
 .popup-content {
     width: 150px;
-    padding: 0 5px;
+    padding: 10px 10px;
 }
 
 header {
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid grey;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.break {
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid var(--break);
+    margin: 15px 0;
 }
 
 .toggle {
@@ -78,8 +93,7 @@ header {
     transition: background ease 0.5s;
     border: 1px solid grey;
     padding: 0;
-    margin: 0;
-    margin-top: 5px;
+    margin-top: 15px;
 }
 
 .toggle:before {
@@ -108,20 +122,30 @@ header {
     transform: translate(1.7em, -50%);
 }
 
-.checkbox-container {
+.setting-col {
     display: flex;
     flex-direction: column;
-    padding: 5px 5px;
+    width: 100%;
+    overflow: hidden;
 }
 
-.setting-item {
+.setting-col > img {
+    position: relative;
+    left: 21px;
+    width: 246px;
+    height: 47px;
+    object-fit: cover;
+    margin: 15px 0;
+}
+
+.setting-row {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 10px 0;
 }
 
-.setting-item > input {
+.setting-row > input {
     accent-color: var(--active);
     margin: 0;
 }
@@ -133,13 +157,15 @@ header {
 }
 
 .setting-name {
-    font-weight: bold;
-    font-size: 1.25em;
-    padding-left: 4px;
+    color: var(--text-primary);
+    font-size: 14px;
+    margin-left: 8px;
 }
 
 .setting-description {
+    position: relative;
+    bottom: 8px;
+    left: 22px;
     color: var(--text-secondary);
-    margin: 0 4px;
-    font-size: 14px;
+    font-size: 12px;
 }

@@ -4,12 +4,12 @@
     "version": "1.0",
     "description": "",
     "icons": {
-        "16": "assets/images/logo-16.png",
-        "32": "assets/images/logo-32.png",
-        "48": "assets/images/logo-48.png",
-        "64": "assets/images/logo-64.png",
-        "96": "assets/images/logo-96.png",
-        "128": "assets/images/logo-128.png"
+        "16": "assets/logo/logo-16.png",
+        "32": "assets/logo/logo-32.png",
+        "48": "assets/logo/logo-48.png",
+        "64": "assets/logo/logo-64.png",
+        "96": "assets/logo/logo-96.png",
+        "128": "assets/logo/logo-128.png"
     },
     "permissions": [
         "activeTab",
@@ -19,12 +19,14 @@
         "https://www.chess.com/game/*"
     ],
     "browser_action": {
-        "default_icon": "assets/images/logo-32.png",
+        "default_icon": "assets/logo/logo-32.png",
         "default_title": "test title",
-        "default_popup": "user/popup.html"
+        "default_popup": "user/popup.html",
+        "browser_style": true
     },
     "options_ui": {
-        "page": "user/options.html"
+        "page": "user/options.html",
+        "browser_style": true
     },
     "background": {
         "scripts": [

@@ -7,71 +7,86 @@
         <link rel="stylesheet" href="styles.css" />
     </head>
 
-    <body>
+    <body class="options">
         <form id="settings-form" class="checkbox-container">
-            <div class="setting-item">
-                <label class="setting-name" for="enable">Enable</label>
-                <div class="setting-item-checkbox">
-                    <input id="enable" type="checkbox" name="enable" />
-                    <label for="enable">Hide your opponent.</label>
-                </div>
+            <header>
+                <img
+                    width="128"
+                    height="128"
+                    src="/assets/logo/logo-128.png"
+                    alt=""
+                />
+                <input
+                    id="enable"
+                    name="enable"
+                    type="checkbox"
+                    class="toggle"
+                />
+            </header>
 
-                <div class="indented-item">
-                    <label for="postgame-rating">Post Game: Rating</label>
-                    <div class="setting-item-checkbox">
-                        <input
-                            id="postgame-rating"
-                            type="checkbox"
-                            name="postgame_rating"
-                        />
-                        <label for="postgame-rating"
-                            >After game ends, continue to hide opponent's
-                            rating.</label
-                        >
-                    </div>
+            <div class="break"></div>
+
+            <div class="setting-col">
+                <div class="setting-row">
+                    <input
+                        id="postgame-rating"
+                        name="postgame_rating"
+                        type="checkbox"
+                    />
+                    <label class="setting-name" for="postgame-rating"
+                        >Rating</label
+                    >
                 </div>
+                <label for="postgame-rating" class="setting-description"
+                    >Disables your opponent's +/- rating change when the game
+                    ends.</label
+                >
+                <img src="/assets/images/rating-change.png" alt="" />
             </div>
 
-            <br />
+            <div class="break"></div>
 
-            <div class="setting-item">
-                <label class="setting-name">Chatbox</label>
-
-                <div class="indented-item">
+            <div class="setting-col">
+                <div class="setting-row">
+                    <input
+                        id="postgame-chat-gameover"
+                        name="postgame_chat_gameover"
+                        type="checkbox"
+                    />
                     <label class="setting-name" for="postgame-chat-gameover"
                         >Game Over</label
                     >
-                    <div class="setting-item-checkbox">
-                        <input
-                            id="postgame-chat-gameover"
-                            type="checkbox"
-                            name="postgame_chat_gameover"
-                        />
-                        <label for="postgame-chat-gameover"
-                            >Hide the Game Over component.</label
-                        >
-                    </div>
                 </div>
+                <label for="postgame-chat-gameover" class="setting-description"
+                    >Hide's the chatbox Game Over message.</label
+                >
+                <img src="/assets/images/game-over.png" alt="" />
+            </div>
 
-                <div class="indented-item">
+            <div class="break"></div>
+
+            <div class="setting-col">
+                <div class="setting-row">
+                    <input
+                        id="postgame-chat-vote"
+                        name="postgame_chat_vote"
+                        type="checkbox"
+                    />
                     <label class="setting-name" for="postgame-chat-vote"
                         >User Voting</label
                     >
-                    <div class="setting-item-checkbox">
-                        <input
-                            id="postgame-chat-vote"
-                            type="checkbox"
-                            name="postgame_chat_vote"
-                        />
-                        <label for="postgame-chat-vote"
-                            >Hide the User Voting component.
-                        </label>
-                    </div>
                 </div>
+                <label for="postgame-chat-vote" class="setting-description"
+                    >Hides the option to rate your opponent's
+                    sportsmanship.</label
+                >
+                <img src="/assets//images/sport-vote.png" alt="" />
             </div>
 
             <div class="form-actions">
-                <button type="submit" id="submit">Save</button>
+                <button class="browser-style" type="submit" id="submit">
+                    Save
+                </button>
             </div>
         </form>
     </body>
