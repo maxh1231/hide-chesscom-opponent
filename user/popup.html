@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+
+    <body>
+        <div class="popup-content">
+            <header>
+                <label class="setting-header" for="enable">Enable</label>
+                <input
+                    id="enable"
+                    name="enable"
+                    type="checkbox"
+                    class="toggle"
+                />
+            </header>
+            <label class="setting-header" for="">Post Game</label>
+
+            <div class="setting-item">
+                <input
+                    id="postgame-rating"
+                    name="postgame_rating"
+                    type="checkbox"
+                />
+                <label class="setting-description" for="postgame-rating"
+                    >Rating</label
+                >
+            </div>
+
+            <div class="setting-item">
+                <input
+                    id="postgame-chat-gameover"
+                    name="postgame_chat_gameover"
+                    type="checkbox"
+                />
+                <label class="setting-description" for="postgame-chat-gameover"
+                    >Game Over</label
+                >
+            </div>
+
+            <div class="setting-item">
+                <input
+                    id="postgame-chat-vote"
+                    name="postgame_chat_vote"
+                    type="checkbox"
+                    disabled
+                />
+                <label class="setting-description" for="postgame-chat-vote"
+                    >User Voting</label
+                >
+            </div>
+        </div>
+    </body>
+    <script
+        type="module"
+        src="chrome://global/content/elements/moz-toggle.mjs"
+    ></script>
+    <script src="index.js"></script>
+</html>

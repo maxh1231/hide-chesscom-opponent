@@ -1,0 +1,79 @@
+<!doctype html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="color-scheme" content="dark light" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+
+    <body>
+        <form id="settings-form" class="checkbox-container">
+            <div class="setting-item">
+                <label class="setting-name" for="enable">Enable</label>
+                <div class="setting-item-checkbox">
+                    <input id="enable" type="checkbox" name="enable" />
+                    <label for="enable">Hide your opponent.</label>
+                </div>
+
+                <div class="indented-item">
+                    <label for="postgame-rating">Post Game: Rating</label>
+                    <div class="setting-item-checkbox">
+                        <input
+                            id="postgame-rating"
+                            type="checkbox"
+                            name="postgame_rating"
+                        />
+                        <label for="postgame-rating"
+                            >After game ends, continue to hide opponent's
+                            rating.</label
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="setting-item">
+                <label class="setting-name">Chatbox</label>
+
+                <div class="indented-item">
+                    <label class="setting-name" for="postgame-chat-gameover"
+                        >Game Over</label
+                    >
+                    <div class="setting-item-checkbox">
+                        <input
+                            id="postgame-chat-gameover"
+                            type="checkbox"
+                            name="postgame_chat_gameover"
+                        />
+                        <label for="postgame-chat-gameover"
+                            >Hide the Game Over component.</label
+                        >
+                    </div>
+                </div>
+
+                <div class="indented-item">
+                    <label class="setting-name" for="postgame-chat-vote"
+                        >User Voting</label
+                    >
+                    <div class="setting-item-checkbox">
+                        <input
+                            id="postgame-chat-vote"
+                            type="checkbox"
+                            name="postgame_chat_vote"
+                        />
+                        <label for="postgame-chat-vote"
+                            >Hide the User Voting component.
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" id="submit">Save</button>
+            </div>
+        </form>
+    </body>
+    <script src="index.js"></script>
+</html>
