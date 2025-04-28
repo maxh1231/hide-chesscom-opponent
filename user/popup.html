@@ -8,48 +8,52 @@
 
     <body class="popup">
         <main>
-            <header>
-                <img src="/assets/logo/logo-64.png" alt="logo" />
-                <input
-                    id="enable"
-                    type="checkbox"
-                    name="enable"
-                    class="toggle"
-                />
-            </header>
-            <div class="break"></div>
-            <div class="setting-row">
-                <input
-                    id="postgame-rating"
-                    type="checkbox"
-                    name="postgame_rating"
-                />
-                <label for="postgame-rating" class="setting-name">Rating</label>
-            </div>
+            <form id="popup-form">
+                <header>
+                    <img src="/assets/logo/logo-64.png" alt="logo" />
+                    <input
+                        id="enable"
+                        type="checkbox"
+                        name="enable"
+                        class="toggle"
+                    />
+                </header>
+                <div class="break"></div>
+                <div class="setting-row">
+                    <input
+                        id="postgame-rating"
+                        type="checkbox"
+                        name="postgame_rating"
+                    />
+                    <label for="postgame-rating" class="setting-name"
+                        >Rating</label
+                    >
+                </div>
 
-            <div class="setting-row">
-                <input
-                    id="postgame-chat-gameover"
-                    type="checkbox"
-                    name="postgame_chat_gameover"
-                />
-                <label for="postgame-chat-gameover" class="setting-name"
-                    >Game Over</label
-                >
-            </div>
+                <div class="setting-row">
+                    <input
+                        id="postgame-chat-gameover"
+                        type="checkbox"
+                        name="postgame_chat_gameover"
+                    />
+                    <label for="postgame-chat-gameover" class="setting-name"
+                        >Game Over</label
+                    >
+                </div>
 
-            <div class="setting-row">
-                <input
-                    id="postgame-chat-vote"
-                    type="checkbox"
-                    name="postgame_chat_vote"
-                />
-                <label for="postgame-chat-vote" class="setting-name"
-                    >User Voting</label
-                >
-            </div>
-            <div class="break"></div>
-            <a href="" class="options-link">View Details</a>
+                <div class="setting-row">
+                    <input
+                        id="postgame-chat-vote"
+                        type="checkbox"
+                        name="postgame_chat_vote"
+                    />
+                    <label for="postgame-chat-vote" class="setting-name"
+                        >User Voting</label
+                    >
+                </div>
+                <div class="break"></div>
+                <a href="" class="options-link">View Details</a>
+            </form>
         </main>
     </body>
     <script src="index.js"></script>

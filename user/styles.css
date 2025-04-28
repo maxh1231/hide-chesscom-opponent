@@ -59,10 +59,6 @@ a:hover {
     color: var(--link-hover);
 }
 
-.disabled {
-    color: var(--disabled);
-}
-
 .popup {
     background-color: var(--bg-popup);
     width: 150px;
@@ -172,6 +168,10 @@ header > img {
     color: var(--text-primary);
     font-size: 15px;
     margin-left: 8px;
+}
+
+.disabled {
+    color: var(--disabled);
 }
 
 .setting-name:hover {

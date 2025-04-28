@@ -4,8 +4,6 @@
     "version": "1.0",
     "description": "",
     "icons": {
-        "16": "assets/logo/logo-16.png",
-        "32": "assets/logo/logo-32.png",
         "48": "assets/logo/logo-48.png",
         "64": "assets/logo/logo-64.png",
         "96": "assets/logo/logo-96.png",
@@ -19,7 +17,10 @@
         "https://www.chess.com/game/*"
     ],
     "browser_action": {
-        "default_icon": "assets/logo/logo-32.png",
+        "default_icon": {
+            "16": "assets/logo/logo-16.png",
+            "32": "assets/logo/logo-32.png"
+        },
         "default_title": "test title",
         "default_popup": "user/popup.html",
         "browser_style": true
@@ -29,16 +30,7 @@
         "browser_style": true
     },
     "background": {
-        "scripts": [
-            "background/default-preferences.js",
-            "background/events.js"
-        ],
+        "scripts": ["background/storage.js", "background/listeners.js"],
         "persistent": false
-    },
-    "content_scripts": [
-        {
-            "matches": ["https://www.chess.com/*"],
-            "js": ["hide-opponent.js"]
-        }
-    ]
+    }
 }
