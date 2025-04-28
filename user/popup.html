@@ -2,18 +2,18 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <meta name="color-scheme" content="dark light light-dark" />
+        <meta name="color-scheme" content="dark light" />
         <link rel="stylesheet" href="styles.css" />
     </head>
 
     <body class="popup">
-        <div class="popup-content">
+        <main>
             <header>
-                <img src="/assets/logo/logo-64.png" alt="" />
+                <img src="/assets/logo/logo-64.png" alt="logo" />
                 <input
                     id="enable"
-                    name="enable"
                     type="checkbox"
+                    name="enable"
                     class="toggle"
                 />
             </header>
@@ -21,19 +21,19 @@
             <div class="setting-row">
                 <input
                     id="postgame-rating"
-                    name="postgame_rating"
                     type="checkbox"
+                    name="postgame_rating"
                 />
-                <label class="setting-name" for="postgame-rating">Rating</label>
+                <label for="postgame-rating" class="setting-name">Rating</label>
             </div>
 
             <div class="setting-row">
                 <input
                     id="postgame-chat-gameover"
-                    name="postgame_chat_gameover"
                     type="checkbox"
+                    name="postgame_chat_gameover"
                 />
-                <label class="setting-name" for="postgame-chat-gameover"
+                <label for="postgame-chat-gameover" class="setting-name"
                     >Game Over</label
                 >
             </div>
@@ -41,15 +41,16 @@
             <div class="setting-row">
                 <input
                     id="postgame-chat-vote"
-                    name="postgame_chat_vote"
                     type="checkbox"
-                    disabled
+                    name="postgame_chat_vote"
                 />
-                <label class="setting-name" for="postgame-chat-vote"
+                <label for="postgame-chat-vote" class="setting-name"
                     >User Voting</label
                 >
             </div>
-        </div>
+            <div class="break"></div>
+            <a href="" class="options-link">View Details</a>
+        </main>
     </body>
     <script src="index.js"></script>
 </html>

@@ -1,94 +1,97 @@
 <!doctype html>
-
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="color-scheme" content="dark light" />
         <link rel="stylesheet" href="styles.css" />
     </head>
-
     <body class="options">
-        <form id="settings-form" class="checkbox-container">
-            <header>
-                <img
-                    width="128"
-                    height="128"
-                    src="/assets/logo/logo-128.png"
-                    alt=""
-                />
-                <input
-                    id="enable"
-                    name="enable"
-                    type="checkbox"
-                    class="toggle"
-                />
-            </header>
-
-            <div class="break"></div>
-
-            <div class="setting-col">
-                <div class="setting-row">
+        <main>
+            <form id="settings-form">
+                <header>
+                    <img src="/assets/logo/logo-128.png" alt="logo" />
                     <input
-                        id="postgame-rating"
-                        name="postgame_rating"
+                        id="enable"
                         type="checkbox"
+                        name="enable"
+                        class="toggle"
                     />
-                    <label class="setting-name" for="postgame-rating"
-                        >Rating</label
+                </header>
+                <div class="break"></div>
+                <div class="setting-col">
+                    <div class="setting-row">
+                        <input
+                            id="postgame-rating"
+                            type="checkbox"
+                            name="postgame_rating"
+                        />
+                        <label for="postgame-rating" class="setting-name"
+                            >Rating</label
+                        >
+                    </div>
+                    <label for="postgame-rating" class="setting-description"
+                        >Disables your opponent's +/- rating change when the
+                        game ends.</label
                     >
-                </div>
-                <label for="postgame-rating" class="setting-description"
-                    >Disables your opponent's +/- rating change when the game
-                    ends.</label
-                >
-                <img src="/assets/images/rating-change.png" alt="" />
-            </div>
-
-            <div class="break"></div>
-
-            <div class="setting-col">
-                <div class="setting-row">
-                    <input
-                        id="postgame-chat-gameover"
-                        name="postgame_chat_gameover"
-                        type="checkbox"
+                    <img
+                        src="/assets/images/rating-change.png"
+                        alt="rating setting"
+                        class="setting-image"
                     />
-                    <label class="setting-name" for="postgame-chat-gameover"
-                        >Game Over</label
-                    >
                 </div>
-                <label for="postgame-chat-gameover" class="setting-description"
-                    >Hide's the chatbox Game Over message.</label
-                >
-                <img src="/assets/images/game-over.png" alt="" />
-            </div>
 
-            <div class="break"></div>
+                <div class="break"></div>
 
-            <div class="setting-col">
-                <div class="setting-row">
-                    <input
-                        id="postgame-chat-vote"
-                        name="postgame_chat_vote"
-                        type="checkbox"
+                <div class="setting-col">
+                    <div class="setting-row">
+                        <input
+                            id="postgame-chat-gameover"
+                            type="checkbox"
+                            name="postgame_chat_gameover"
+                        />
+                        <label for="postgame-chat-gameover" class="setting-name"
+                            >Game Over</label
+                        >
+                    </div>
+                    <label
+                        for="postgame-chat-gameover"
+                        class="setting-description"
+                        >Hides the chatbox Game Over message.</label
+                    >
+                    <img
+                        src="/assets/images/game-over.png"
+                        alt="game over setting"
+                        class="setting-image"
                     />
-                    <label class="setting-name" for="postgame-chat-vote"
-                        >User Voting</label
-                    >
                 </div>
-                <label for="postgame-chat-vote" class="setting-description"
-                    >Hides the option to rate your opponent's
-                    sportsmanship.</label
-                >
-                <img src="/assets//images/sport-vote.png" alt="" />
-            </div>
 
-            <div class="form-actions">
-                <button class="browser-style" type="submit" id="submit">
-                    Save
-                </button>
-            </div>
-        </form>
+                <div class="break"></div>
+
+                <div class="setting-col">
+                    <div class="setting-row">
+                        <input
+                            id="postgame-chat-vote"
+                            type="checkbox"
+                            name="postgame_chat_vote"
+                        />
+                        <label for="postgame-chat-vote" class="setting-name"
+                            >User Voting</label
+                        >
+                    </div>
+                    <label class="setting-description" for="postgame-chat-vote"
+                        >Hides the option to rate your opponent's
+                        sportsmanship.</label
+                    >
+                    <img
+                        src="/assets//images/sport-vote.png"
+                        alt="sportsmanship vote"
+                        class="setting-image"
+                    />
+                </div>
+                <div class="break"></div>
+                <button id="submit" type="submit">Save</button>
+            </form>
+        </main>
     </body>
     <script src="index.js"></script>
 </html>

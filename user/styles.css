@@ -1,68 +1,76 @@
 :root {
-    /* Greyscale for Light Mode */
-    --color-grey-05: #fbfbfe;
-    --color-grey-10: #f9f9fb;
-    --color-grey-20: #f0f0f4;
-    --color-grey-30: #e0e0e6;
-    --color-grey-40: #cfcfd8;
-    --color-grey-50: #bfbfc9;
-
-    /* Light Mode Defaults */
     --bg-layer1: #f9f9fb;
-    --bg-layer2: #ffffff;
-    --bg-layer3: #ededed;
-
+    --bg-layer2: #ededed;
+    --bg-options: #ffffff;
+    --bg-popup: #ffffff;
+    --bg-button: #eeeeef;
     --text-primary: #15141a;
     --text-secondary: #5b5b66;
-
     --active: #0260df;
     --disabled: rgba(21, 20, 26, 0.4);
-    --error: #c50042;
-    --border: #e0e0e6;
     --break: #c4c4c5;
+    --button-hover: #dededf;
+    --link-hover: #0153ca;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Greyscale for Dark Mode */
-        --color-grey-05: #5b5b66;
-        --color-grey-10: #52525e;
-        --color-grey-30: #42414d;
-        --color-grey-40: #3a3944;
-        --color-grey-60: #2b2a33;
-        --color-grey-80: #1c1b22;
-        --color-grey-90: #15141a;
-
-        /* Dark Mode Defaults */
         --bg-layer1: #2b2a33;
-        --bg-layer2: #42414d;
-        --bg-layer3: #1c1b22;
-
+        --bg-layer2: #1c1b22;
+        --bg-options: #23222b;
+        --bg-popup: #42414d;
+        --bg-button: #2c2b32;
         --text-primary: #fbfbfe;
         --text-secondary: #cfcfd8;
-
         --active: #00ddff;
         --disabled: rgba(251, 251, 254, 0.4);
-        --error: #ff9aa2;
         --break: #71707a;
-    }
-
-    .options {
-        background-color: #23222b;
-        padding: 10px 10px;
-    }
-
-    .popup-content {
-        background-color: var(--color-grey-30);
+        --button-hover: #3b3a41;
+        --link-hover: #62dce9;
     }
 }
-body {
+html {
     font-family:
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans,
         Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
 }
-.popup-content {
+
+button {
+    background-color: var(--bg-button);
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    margin: 15px 0px;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: var(--button-hover);
+}
+
+a {
+    color: var(--active);
+    font-size: 15px;
+}
+
+a:hover {
+    color: var(--link-hover);
+}
+
+.disabled {
+    color: var(--disabled);
+}
+
+.popup {
+    background-color: var(--bg-popup);
     width: 150px;
+    padding: 10px 10px;
+}
+
+.options {
+    background-color: var(--bg-options);
     padding: 10px 10px;
 }
 
@@ -72,6 +80,11 @@ header {
     justify-content: center;
     align-items: center;
 }
+
+header > img {
+    margin: 15px 0;
+}
+
 .break {
     width: 100%;
     height: 1px;
@@ -93,7 +106,7 @@ header {
     transition: background ease 0.5s;
     border: 1px solid grey;
     padding: 0;
-    margin-top: 15px;
+    margin: 15px 0;
 }
 
 .toggle:before {
@@ -118,7 +131,7 @@ header {
 }
 
 .toggle:checked:before {
-    background-color: var(--bg-layer3);
+    background-color: var(--bg-layer2);
     transform: translate(1.7em, -50%);
 }
 
@@ -129,15 +142,6 @@ header {
     overflow: hidden;
 }
 
-.setting-col > img {
-    position: relative;
-    left: 21px;
-    width: 246px;
-    height: 47px;
-    object-fit: cover;
-    margin: 15px 0;
-}
-
 .setting-row {
     display: flex;
     flex-direction: row;
@@ -145,21 +149,33 @@ header {
     margin: 10px 0;
 }
 
-.setting-row > input {
+.setting-image {
+    position: relative;
+    left: 21px;
+    width: 246px;
+    height: 47px;
+    object-fit: cover;
+    margin: 15px 0;
+    border-radius: 5px;
+}
+
+.setting-row > input[type="checkbox"] {
     accent-color: var(--active);
     margin: 0;
 }
 
-.setting-header {
-    color: var(--text-primary);
-    font-weight: bold;
-    margin: 5px 0;
+.setting-row > input[type="checkbox"]:hover {
+    cursor: pointer;
 }
 
 .setting-name {
     color: var(--text-primary);
-    font-size: 14px;
+    font-size: 15px;
     margin-left: 8px;
+}
+
+.setting-name:hover {
+    cursor: pointer;
 }
 
 .setting-description {
@@ -167,5 +183,6 @@ header {
     bottom: 8px;
     left: 22px;
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 13px;
+    opacity: 0.69;
 }
