@@ -62,6 +62,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         checkboxBtns[key].checked = value;
     }
 
+    try {
+        document
+            .getElementById('options-link')
+            .addEventListener('click', () => {
+                browser.runtime.openOptionsPage();
+            });
+    } catch (err) {
+        if ((!err) instanceof TypeError) console.err(err);
+    }
+
     // Options Page: onSubmit listener
     try {
         const form = document.getElementById('options-form');
