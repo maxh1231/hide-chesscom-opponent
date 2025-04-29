@@ -1,0 +1,22 @@
+{
+    "name": "hide-chesscom-opponent",
+    "version": "1.0",
+    "description": "Firefox extension to hide your opponent on Chess.com",
+    "main": "manifest.json",
+    "scripts": {
+        "dev": "npx web-ext run --start-url https://www.chess.com ",
+        "lint": "npx web-ext lint --pretty"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/maxh1231/hide-chesscom-opponent"
+    },
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/maxh1231/hide-chesscom-opponent/issues"
+    },
+    "homepage": "https://github.com/maxh1231/hide-chesscom-opponent#readme",
+    "dependencies": {
+        "web-ext": "^8.6.0"
+    }
+}

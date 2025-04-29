@@ -1,16 +1,27 @@
-# `<NameTBD>` <img src="./assets/logo/logo-32.png" alt="drawing"/> ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
+# Hide Chess.com Opponent <img src="./assets/logo/logo-32.png" alt="logo"/> ![Project License Badge](https://img.shields.io/badge/license-MIT-brightgreen)
 
-`<NameTBD>` is a Firefox extension to hide your opponent on Chess.com.
+A lightweight Firefox extension that hides your opponent on Chess.com while maintaining compliance with [Acorns Design System](https://acorn.firefox.com/latest/acorn-aRSAh0Sp).
+
+## Preferences
+
+#### **_All preferences are enabled by default!_**
+
+#### Preferences are configurable in the brower action or extension's preferences page.
+
+- `enable` includes opponent username, avatar, rating, titles, badges, and flair. This setting allows users to quickly toggle the extension's scripts in real-time without managing the extension at `about:addons`.
+- `postgame_rating` +/- rating change of opponent.
+- `postgame_chat_gameover` gameover message in chatbox.
+- `postgame_chat_vote` rate opponents sportsmanship.
 
 ## Usage
 
 - Clone Repository
-- navigate to [about:debugging](about:debugging#/runtime/this-firefox)
-- Select `Load Temporary Add-On...` and choose `<NameTBD>`
+- Install dependencies with `npm i`.
+- Start extension with `npm run dev`.
 
 ## Contributing
 
-If you would like to contribute to this project feel free to fork this repo and submit a pull request.
+Fork repository and submit Pull Requests to `develop`.
 
 ## License
 

@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
-    "name": "chess-name-hider",
+    "name": "Hide Chess.com Opponent",
     "version": "1.0",
-    "description": "",
+    "description": "Removes all UI components related to your opponent on Chess.com. Includes user settings that are easily configurable in real-time without navigating away from your chess match to prevent disruption in user-experience.",
     "icons": {
         "48": "assets/logo/logo-48.png",
         "64": "assets/logo/logo-64.png",
