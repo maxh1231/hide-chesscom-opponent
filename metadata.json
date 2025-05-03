@@ -1,0 +1,20 @@
+{
+    "name": {
+        "en-US": "Hide Chess.com Opponent"
+    },
+    "summary": {
+        "en-US": "Removes all UI components related to your opponent on Chess.com. Includes user settings that are easily configurable in real-time without navigating away from your chess match to prevent disruption in user-experience"
+    },
+    "default_locale": "en-US",
+    "categories": {
+        "firefox": ["appearance", "games-entertainment"]
+    },
+    "version": {
+        "license": "MIT",
+        "compatibility": ["firefox"]
+    },
+    "homepage": {
+        "en-US": "https://github.com/maxh1231/hide-chesscom-opponent"
+    },
+    "requires_payment": false
+}
