@@ -16,5 +16,6 @@
     "homepage": {
         "en-US": "https://github.com/maxh1231/hide-chesscom-opponent"
     },
-    "requires_payment": false
+    "requires_payment": false,
+    "approval_notes": "1.0.6 includes manifest data modifications, options_ui.page fix, and extension usage screenshots."
 }
