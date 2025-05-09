@@ -1,8 +1,8 @@
 {
     "manifest_version": 2,
     "name": "Hide Chess.com Opponent",
-    "version": "1.0.5",
-    "description": "Removes all UI components related to your opponent on Chess.com. Includes user settings that are easily configurable in real-time without navigating away from your chess match to prevent disruption in user-experience.",
+    "version": "1.0.6",
+    "description": "Finally, a fully functional focus-mode.",
     "icons": {
         "48": "assets/logo/logo-48.png",
         "64": "assets/logo/logo-64.png",
@@ -21,7 +21,7 @@
             "16": "assets/logo/logo-16.png",
             "32": "assets/logo/logo-32.png"
         },
-        "default_title": "test title",
+        "default_title": "Chess.com Settings",
         "default_popup": "user/popup.html",
         "browser_style": true
     },
