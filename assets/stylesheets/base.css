@@ -1,7 +1,5 @@
-div.player-component.player-top > div.player-avatar-component,
-div.player-component.player-top
-    > div.player-tagline
-    > div.cc-user-block-component,
+div.player-component.player-top .player-avatar,
+div.player-component.player-top .cc-user-block-component,
 div.game-start-message-component {
     visibility: hidden;
 }
