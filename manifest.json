@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Hide Chess.com Opponent",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Finally, a fully functional focus-mode.",
     "icons": {
         "48": "assets/logo/logo-48.png",
